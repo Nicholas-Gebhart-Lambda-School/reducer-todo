@@ -19,17 +19,15 @@ export const reducer = (state, action) => {
       };
     case 'REMOVE_COMPLETED':
       return {
-        list: [state.list.filter(item => !item.completed)]
+        list: state.list.filter(item => !item.completed)
       };
     case 'MARK_COMPLETED':
       return {
-        list: [
-          state.list.map(item =>
-            item.id === action.payload
-              ? { ...item, completed: !item.completed }
-              : item
-          )
-        ]
+        list: state.list.map(item =>
+          item.id === action.payload
+            ? { ...item, completed: !item.completed }
+            : item
+        )
       };
     default:
       return state;
